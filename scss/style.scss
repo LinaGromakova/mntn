@@ -619,7 +619,7 @@ a {
     left: -25px;
   }
   .main .section-content .img-col {
-    max-width: calc((1vw + 1vh) * 22);
+    max-width: calc((1vw + 1vh) * 23);
   }
   .section-nav {
     right: 2.5%;
@@ -813,5 +813,9 @@ a {
   .overlay-form form {
     max-height: 100%;
     overflow-y: auto;
+  }
+  .main .section-content > :nth-child(1) {
+    margin-right: inherit;
+    margin-bottom: 70px;
   }
 }
