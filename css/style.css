@@ -333,7 +333,7 @@ a {
   padding-top: calc((1vw + 1vh) * 9.567);
   width: 100vw;
   min-height: 100vh;
-  background: center/cover url("../images/bg/HG.jpeg") no-repeat #0b1d26;
+  background: center/cover url("../images/bg/HG.webp") no-repeat #0b1d26;
 }
 .section-hero .snow,
 .section-hero .snow::after,
@@ -624,6 +624,9 @@ a {
   }
 }
 @media (max-width: 1024px) {
+  .container {
+    width: 96%;
+  }
   .footer .footer-content .footer-col__right > :nth-child(1) {
     margin-right: calc((1vw + 1vh) * 2.67);
   }
@@ -672,9 +675,6 @@ a {
   }
 }
 @media (max-width: 768px) {
-  .container {
-    max-width: 98%;
-  }
   h1 {
     font-size: 45px !important;
     line-height: 100% !important;
@@ -731,6 +731,10 @@ a {
     flex-direction: row;
     width: auto;
     margin-bottom: 25px;
+  }
+  .section-hero .hero-main .hero-follow a {
+    width: 20px;
+    height: 20px;
   }
   .section-hero .hero-main .hero-follow p + a {
     margin: 0 30px;
@@ -793,7 +797,7 @@ a {
     height: calc((1vw + 1vh) * 23);
   }
 }
-@media (max-width: 768px) and (orientation: landscape) {
+@media (max-width: 1000px) and (orientation: landscape) {
   .overlay-form form {
     max-height: 100%;
     overflow-y: auto;
