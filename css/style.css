@@ -14,16 +14,13 @@ body {
   color: #fff;
   background-color: #0b1d26;
 }
-body::-webkit-scrollbar,
-body .overlay::-webkit-scrollbar {
+body::-webkit-scrollbar {
   width: 8px;
 }
-body::-webkit-scrollbar-track,
-body .overlay::-webkit-scrollbar-track {
+body::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.5);
 }
-body::-webkit-scrollbar-thumb,
-body .overlay::-webkit-scrollbar-thumb {
+body::-webkit-scrollbar-thumb {
   background-color: #fff;
 }
 
@@ -39,7 +36,7 @@ h5,
 h6 {
   font-size: inherit;
   font-weight: initial;
-  font-family: "Chronicle Display-Bold";
+  font-family: "Chronicle Display-Bold", sans-serif;
 }
 
 ul {
@@ -59,7 +56,7 @@ a {
 
 .logo {
   color: #fff;
-  font-family: "Chronicle Display-Bold";
+  font-family: "Chronicle Display-Bold", sans-serif;
   font-size: 32px;
   font-weight: 700;
   letter-spacing: 1%;
@@ -111,16 +108,13 @@ a {
   margin-top: 10px;
   width: 70%;
 }
-.header .header-nav a:nth-child(2) {
-  margin: 0px 35px;
-}
-.header .header-nav a li {
+.header .header-nav li {
   display: inline-block;
   font-family: "Gilroy-Bold";
   font-size: 18px;
   line-height: 22px;
 }
-.header .header-nav a li::after {
+.header .header-nav li::after {
   content: "";
   display: block;
   width: 0%;
@@ -128,8 +122,11 @@ a {
   background-color: #fff;
   transition-duration: 0.5s;
 }
-.header .header-nav a li:hover::after {
+.header .header-nav li:hover::after {
   width: 100%;
+}
+.header .header-nav li:nth-child(2) {
+  margin: 0px 35px;
 }
 .header .btn-header-account {
   position: relative;
@@ -138,7 +135,7 @@ a {
   outline: none;
   background-color: transparent;
   color: #ffffff;
-  font-family: "Gilroy-Bold";
+  font-family: "Gilroy-Bold", sans-serif;
   font-size: 17px;
   line-height: 21px;
   display: flex;
@@ -148,12 +145,12 @@ a {
 }
 .header .btn-header-account::after {
   content: "Account";
+  margin-left: 10px;
 }
 .header .btn-header-account::before {
   content: "";
   position: absolute;
   bottom: -5px;
-  left: 2.5px;
   display: block;
   height: 2px;
   width: 0%;
@@ -163,9 +160,6 @@ a {
 .header .btn-header-account:hover::before {
   width: 100%;
 }
-.header .btn-header-account img {
-  margin-right: 10px;
-}
 
 .overlay-form.active {
   transform: translateX(0%);
@@ -173,6 +167,8 @@ a {
 
 .overlay-form {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100%;
   display: flex;
@@ -184,15 +180,14 @@ a {
   transition-duration: 1s;
   transform: translateX(-100%);
   z-index: 7000;
+  overflow-y: auto;
 }
 .overlay-form form {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  display: block;
   background-color: #0b1d26;
   padding: 30px 50px;
+  min-height: 50vh;
 }
 .overlay-form form .btn-acc-close {
   position: absolute;
@@ -213,12 +208,13 @@ a {
   transform: rotate(45deg);
 }
 .overlay-form form h3 {
-  font-family: "Gilroy-Bold";
+  font-family: "Gilroy-Bold", sans-serif;
   margin-bottom: 20px;
   font-size: 45px;
+  text-align: center;
 }
 .overlay-form form label {
-  font-family: "Gilroy-Bold";
+  font-family: "Gilroy-Bold", sans-serif;
   font-size: 18px;
   line-height: 32px;
   margin-top: 27px;
@@ -226,6 +222,7 @@ a {
 .overlay-form form label input {
   background-color: transparent;
   height: 30px;
+  width: 100%;
   padding: 10px 12px;
   background-color: transparent;
   border-radius: 5px;
@@ -235,6 +232,7 @@ a {
   margin-top: 5px;
   display: block;
   transition-duration: 0.5s;
+  margin-bottom: 20px;
 }
 .overlay-form form label input:hover {
   border: 1px solid #fff;
@@ -250,17 +248,16 @@ a {
   cursor: pointer;
   padding: 0;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 2px solid #fff;
   border-radius: 2px;
   color: #fff;
   font-size: 16px;
   width: 18px;
   height: 18px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
   font-weight: 800;
-  vertical-align: sub;
   margin-right: 10px;
 }
 .overlay-form form input[type=checkbox]:checked::before {
@@ -269,6 +266,8 @@ a {
 }
 .overlay-form form .label-agree {
   font-size: 16px;
+  display: flex;
+  justify-content: center;
 }
 .overlay-form form .btn-submit {
   width: 100%;
@@ -332,16 +331,16 @@ a {
   position: relative;
   overflow: hidden;
   padding-top: calc((1vw + 1vh) * 9.567);
-  width: 101vw;
+  width: 100vw;
   min-height: 100vh;
-  background: center/cover url("../images/bg/HG.jpeg") no-repeat;
+  background: center/cover url("../images/bg/HG.jpeg") no-repeat #0b1d26;
 }
 .section-hero .snow,
 .section-hero .snow::after,
 .section-hero .snow::before {
   content: "";
   position: absolute;
-  z-index: 5000;
+  z-index: 50;
   inset: -400px 0px 0px -250px;
   background-image: radial-gradient(4px 4px at 100px 50px, #fff, transparent), radial-gradient(2px 2px at 200px 150px, #fff, transparent), radial-gradient(4px 4px at 300px 250px, #fff, transparent), radial-gradient(3px 3px at 400px 350px, #fff, transparent), radial-gradient(1.5px 1.5px at 500px 100px, #fff, transparent), radial-gradient(2px 2px at 50px 200px, #fff, transparent), radial-gradient(4px 4px at 150px 300px, #fff, transparent), radial-gradient(1.5px 1.5px at 350px 500px, #fff, transparent), radial-gradient(4px 4px at 150px 400px, #fff, transparent);
   background-size: 650px 650px;
@@ -397,7 +396,7 @@ a {
   transform: scale(1.1);
 }
 .section-hero .hero-main .hero-title {
-  font-family: "Chronicle Display-Semibold";
+  font-family: "Chronicle Display-Semibold", sans-serif;
   font-size: calc((1vw + 1vh) * 2.934);
   line-height: calc((1vw + 1vh) * 3.333);
   text-transform: capitalize;
@@ -407,7 +406,7 @@ a {
   content: "⸻ A Hiking guide";
   display: block;
   color: #fbd784;
-  font-family: "Gilroy-ExtraBold";
+  font-family: "Gilroy-ExtraBold", sans-serif;
   font-size: 18px;
   line-height: 22px;
   letter-spacing: 6px;
@@ -431,6 +430,7 @@ a {
   justify-content: center;
   text-align: center;
   position: relative;
+  background-image: linear-gradient(to bottom, transparent 90%, #0b1d26 90%);
 }
 .section-hero .layers .layers__back {
   transform: translate3d(0, calc(var(--scrollTop) / 3), 0);
@@ -482,13 +482,13 @@ a {
   left: calc((1vw + 1vh) * -5);
   top: -100px;
   color: rgba(255, 255, 255, 0.1019607843);
-  font-family: "Gilroy-Bold";
+  font-family: "Gilroy-Bold", sans-serif;
   font-size: calc((1vw + 1vh) * 8);
   line-height: 240px;
   position: absolute;
 }
 .main .section-content .info-col h2 {
-  font-family: "Chronicle Display-Semibold";
+  font-family: "Chronicle Display-Semibold", sans-serif;
   font-size: calc((1vw + 1vh) * 2.135);
   line-height: calc((1vw + 1vh) * 2.57);
 }
@@ -496,7 +496,7 @@ a {
   content: attr(data-bef);
   display: block;
   color: #fbd784;
-  font-family: "Gilroy-ExtraBold";
+  font-family: "Gilroy-ExtraBold", sans-serif;
   font-size: 18px;
   line-height: 22px;
   letter-spacing: 6px;
@@ -505,7 +505,7 @@ a {
   white-space: nowrap;
 }
 .main .section-content .info-col .info-subtitle {
-  font-family: "Gilroy-Bold";
+  font-family: "Gilroy-Bold", sans-serif;
   font-size: 18px;
   line-height: 32px;
   margin-top: 27px;
@@ -553,7 +553,7 @@ a {
   margin-right: 50px;
 }
 .footer .footer-content .footer-col__left p {
-  font-family: "Gilroy-Bold";
+  font-family: "Gilroy-Bold", sans-serif;
   font-size: 18px;
   line-height: 32px;
   margin-top: 27px;
@@ -572,11 +572,15 @@ a {
   display: inline-block;
   vertical-align: top;
 }
-.footer .footer-content .footer-col__right .footer-menu a > * {
+.footer .footer-content .footer-col__right .footer-menu li {
+  margin: 8px 0px;
   max-width: -moz-max-content;
   max-width: max-content;
+  font-family: "Gilroy-Medium", sans-serif;
+  font-size: 18px;
+  line-height: 32px;
 }
-.footer .footer-content .footer-col__right .footer-menu a > *::after {
+.footer .footer-content .footer-col__right .footer-menu li::after {
   content: "";
   display: block;
   width: 0%;
@@ -584,23 +588,18 @@ a {
   background-color: #fff;
   transition-duration: 0.5s;
 }
-.footer .footer-content .footer-col__right .footer-menu a > *:hover::after {
+.footer .footer-content .footer-col__right .footer-menu li:hover::after {
   width: 100%;
 }
-.footer .footer-content .footer-col__right .footer-menu a li {
-  margin: 8px 0px;
-}
-.footer .footer-content .footer-col__right .footer-menu li {
-  font-family: "Gilroy-Medium";
-  font-size: 18px;
-  line-height: 32px;
-}
-.footer .footer-content .footer-col__right .footer-menu .menu-title {
+.footer .footer-content .footer-col__right .footer-menu li:first-child {
   color: #fbd784;
-  font-family: "Gilroy-Bold";
+  font-family: "Gilroy-Bold", sans-serif;
   font-size: 24px;
   line-height: 32px;
   margin-bottom: 8px;
+}
+.footer .footer-content .footer-col__right .footer-menu li:first-child::after {
+  background-color: #fbd784;
 }
 
 @keyframes snow-anim {
@@ -652,7 +651,7 @@ a {
     bottom: 24%;
   }
   .section-content {
-    width: 100vw !important;
+    width: 100% !important;
     flex-direction: column;
     justify-content: center;
   }
@@ -670,9 +669,6 @@ a {
   }
 }
 @media (max-width: 768px) {
-  .main .section-content .info-col::before {
-    font-size: 150px;
-  }
   .container {
     max-width: 98%;
   }
@@ -684,16 +680,17 @@ a {
     font-size: 35px !important;
     line-height: 100% !important;
   }
-  .hamburger-btn.active {
-    margin-left: -15%;
-  }
   .hamburger-btn.active #bar1 {
     transform: rotate(45deg);
   }
   .hamburger-btn.active #bar2 {
     position: absolute;
     width: 100%;
-    transform: rotate(-45deg) translate(10px, -7px);
+    transform: rotate(-45deg) translate(10px, -9px);
+  }
+  .hamburger-btn.active {
+    position: absolute;
+    left: calc(50% - 17.5px);
   }
   .header .hamburger-btn {
     display: block;
@@ -744,9 +741,6 @@ a {
   .section-hero .hero-main .hero-follow p {
     transform: rotate(0);
   }
-  .section-hero .layers {
-    margin-top: -270px;
-  }
   .section-hero .layers > *:first-child {
     bottom: 29%;
   }
@@ -756,8 +750,16 @@ a {
   .section-nav {
     display: none;
   }
+  .main .section-content {
+    width: 100% !important;
+    flex-direction: column;
+    justify-content: center;
+  }
   .main .section-content .info-col {
     padding: 0px 10px;
+  }
+  .main .section-content .info-col::before {
+    font-size: 150px;
   }
   .main .section-content .info-col .info-title::before {
     white-space: wrap;
@@ -773,6 +775,7 @@ a {
   }
   .header .btn-header-account::after {
     content: "";
+    margin-left: inherit;
   }
   .footer .footer-content .footer-col__right > :nth-child(1) {
     margin-right: inherit;
@@ -791,5 +794,11 @@ a {
   }
   .section-hero .layers::after {
     height: calc((1vw + 1vh) * 23);
+  }
+}
+@media (max-width: 768px) and (orientation: landscape) {
+  .overlay-form form {
+    max-height: 100%;
+    overflow-y: auto;
   }
 }/*# sourceMappingURL=style.css.map */

@@ -9,15 +9,6 @@ const btnCloseForm = document.getElementById('btn-acc-close');
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
-window.addEventListener('scroll', (e) => {
-  document.body.style.setProperty('--scrollTop', this.scrollY + 'px');
-
-  let index = Math.floor(window.scrollY / 800);
-  navRadioArr.forEach((el, indexEl) => {
-    index === indexEl ? (el.checked = true) : undefined;
-  });
-});
-
 btnNavArr.forEach((btn, indexBtn) => {
   btn.addEventListener('click', () => {
     contentArr.forEach((section, index) => {
@@ -48,6 +39,14 @@ btnCloseForm.addEventListener('click', () => {
 });
 
 if (ScrollTrigger.isTouch !== 1) {
+  window.addEventListener('scroll', (e) => {
+    document.body.style.setProperty('--scrollTop', this.scrollY + 'px');
+
+    let index = Math.floor(window.scrollY / 800);
+    navRadioArr.forEach((el, indexEl) => {
+      index === indexEl ? (el.checked = true) : undefined;
+    });
+  });
   ScrollSmoother.create({
     wrapper: '.wrapper',
     content: '.content',

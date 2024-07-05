@@ -30,7 +30,7 @@
   <body>
     <div class="wrapper">
       <div class="content">
-        <header class="header" id="start">
+        <header class="header nav-sec" id="start">
           <div class="logo">
             <a href="index.html">MNTN</a>
           </div>
@@ -40,19 +40,17 @@
           </button>
           <nav class="header-nav" id="menu">
             <ul>
-              <a href="#"><li>Equipment</li></a
-              ><a href="#"><li>About us</li></a
-              ><a href="#">
-                <li>Blog</li>
-              </a>
+              <li><a href="#">Equipment</a></li>
+              <li><a href="#">About us</a></li>
+              <li><a href="#">Blog</a></li>
             </ul>
           </nav>
           <button class="btn-header-account" id="btn-acc" tabindex="0">
-            <img src="images/icons/account.svg" alt="" />
+            <img src="images/icons/account.svg" alt="Account-icon" />
           </button>
         </header>
 
-        <section class="section-hero nav-sec">
+        <section class="section-hero">
           <div class="snow"></div>
           <div class="hero-main">
             <div class="hero-follow">
@@ -70,8 +68,16 @@
             <div></div>
           </div>
           <div class="layers">
-            <img src="images/bg/MG.png" class="layers__back" />
-            <img src="images/bg/VG.png" class="layers__front" />
+            <img
+              src="images/bg/MG.png"
+              class="layers__back"
+              alt="background-mountain-layer"
+            />
+            <img
+              src="images/bg/VG.png"
+              class="layers__front"
+              alt="background-mountain-layer"
+            />
           </div>
         </section>
         <main class="main">
@@ -163,22 +169,18 @@
               </div>
               <div class="footer-col__right">
                 <ul class="footer-menu">
-                  <li class="menu-title">More on The Blog</li>
-                  <a href="#"> <li>About MNTN</li> </a
-                  ><a href="#"> <li>Contributors & Writers</li> </a
-                  ><a href="#"> <li>Write For Us</li> </a
-                  ><a href="#"> <li>Contact Us</li> </a
-                  ><a href="#">
-                    <li>Privacy Policy</li>
-                  </a>
+                  <li>More on The Blog</li>
+                  <li><a href="#">About MNTN</a></li>
+                  <li><a href="#">Contributors & Writers</a></li>
+                  <li><a href="#">Write For Us</a></li>
+                  <li><a href="#">Contact Us</a></li>
+                  <li><a href="#">Privacy Policy</a></li>
                 </ul>
                 <ul class="footer-menu">
-                  <li class="menu-title">More on MNTN</li>
-                  <a href="#"> <li>The Team</li> </a
-                  ><a href="#"> <li>Jobs</li> </a
-                  ><a href="#">
-                    <li>Press</li>
-                  </a>
+                  <li>More on MNTN</li>
+                  <li><a href="#">The Team</a></li>
+                  <li><a href="#">Jobs</a></li>
+                  <li><a href="#">Press</a></li>
                 </ul>
               </div>
             </div>
@@ -221,9 +223,9 @@
             id="userpass"
         /></label>
         <label class="label-agree">
-          <input type="checkbox" required name="" id="" tabindex="0" /> I agree
-          to the <u>terms & policy</u></label
-        >
+          <input type="checkbox" required name="" id="" tabindex="0" />
+          <span> I agree to the <u>terms & policy</u></span>
+        </label>
         <button type="submit" class="btn-submit" tabindex="0">SignUp</button>
       </form>
     </div>

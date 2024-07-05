@@ -6,20 +6,20 @@
 html {
   scroll-behavior: smooth;
 }
+$index: calc(1vw + 1vh);
+$yellow: #fbd784;
+$bg-color: #0b1d26;
 body {
   overflow-x: hidden;
   color: #fff;
-  background-color: #0b1d26;
-  &::-webkit-scrollbar,
-  .overlay::-webkit-scrollbar {
+  background-color: $bg-color;
+  &::-webkit-scrollbar {
     width: 8px;
   }
-  &::-webkit-scrollbar-track,
-  .overlay::-webkit-scrollbar-track {
+  &::-webkit-scrollbar-track {
     background: rgba($color: #fff, $alpha: 0.5);
   }
-  &::-webkit-scrollbar-thumb,
-  .overlay::-webkit-scrollbar-thumb {
+  &::-webkit-scrollbar-thumb {
     background-color: #fff;
   }
 }
@@ -35,7 +35,7 @@ h5,
 h6 {
   font-size: inherit;
   font-weight: initial;
-  font-family: 'Chronicle Display-Bold';
+  font-family: 'Chronicle Display-Bold', sans-serif;
 }
 ul {
   list-style-type: none;
@@ -51,17 +51,16 @@ a {
   width: calc($index * 49.2);
 }
 
-$index: calc(1vw + 1vh);
 @mixin slide-num {
   color: #ffffff1a;
-  font-family: 'Gilroy-Bold';
+  font-family: 'Gilroy-Bold', sans-serif;
   font-size: calc($index * 8);
   line-height: 240px;
 }
 @mixin before-title {
   display: block;
-  color: #fbd784;
-  font-family: 'Gilroy-ExtraBold';
+  color: $yellow;
+  font-family: 'Gilroy-ExtraBold', sans-serif;
   font-size: 18px;
   line-height: 22px;
   letter-spacing: 6px;
@@ -69,12 +68,12 @@ $index: calc(1vw + 1vh);
   margin-bottom: 27px;
 }
 @mixin main-title {
-  font-family: 'Chronicle Display-Semibold';
+  font-family: 'Chronicle Display-Semibold', sans-serif;
   font-size: calc($index * 2.135);
   line-height: calc($index * 2.57);
 }
 @mixin main-subtitle {
-  font-family: 'Gilroy-Bold';
+  font-family: 'Gilroy-Bold', sans-serif;
   font-size: 18px;
   line-height: 32px;
   margin-top: 27px;
@@ -86,7 +85,7 @@ $index: calc(1vw + 1vh);
 }
 @mixin logo {
   color: #fff;
-  font-family: 'Chronicle Display-Bold';
+  font-family: 'Chronicle Display-Bold', sans-serif;
   font-size: 32px;
   font-weight: 700;
   letter-spacing: 1%;
@@ -145,14 +144,12 @@ $index: calc(1vw + 1vh);
     }
   }
   .header-nav {
-    a {
+    li {
+      display: inline-block;
+      @include md-text;
+      @include hoverText;
       &:nth-child(2) {
         margin: 0px 35px;
-      }
-      li {
-        display: inline-block;
-        @include md-text;
-        @include hoverText;
       }
     }
   }
@@ -163,7 +160,7 @@ $index: calc(1vw + 1vh);
     outline: none;
     background-color: transparent;
     color: #ffffff;
-    font-family: 'Gilroy-Bold';
+    font-family: 'Gilroy-Bold', sans-serif;
     font-size: 17px;
     line-height: 21px;
     display: flex;
@@ -171,12 +168,12 @@ $index: calc(1vw + 1vh);
     height: max-content;
     &::after {
       content: 'Account';
+      margin-left: 10px;
     }
     &::before {
       content: '';
       position: absolute;
       bottom: -5px;
-      left: 2.5px;
       display: block;
       height: 2px;
       width: 0%;
@@ -186,10 +183,6 @@ $index: calc(1vw + 1vh);
     &:hover::before {
       width: 100%;
     }
-
-    img {
-      margin-right: 10px;
-    }
   }
 }
 .overlay-form.active {
@@ -197,6 +190,8 @@ $index: calc(1vw + 1vh);
 }
 .overlay-form {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100vw;
   height: 100%;
   display: flex;
@@ -207,15 +202,14 @@ $index: calc(1vw + 1vh);
   transition-duration: 1s;
   transform: translateX(-100%);
   z-index: 7000;
+  overflow-y: auto;
 
   form {
     position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: #0b1d26;
+    display: block;
+    background-color: $bg-color;
     padding: 30px 50px;
+    min-height: 50vh;
     .btn-acc-close {
       position: absolute;
       text-align: center;
@@ -235,15 +229,17 @@ $index: calc(1vw + 1vh);
       }
     }
     h3 {
-      font-family: 'Gilroy-Bold';
+      font-family: 'Gilroy-Bold', sans-serif;
       margin-bottom: 20px;
       font-size: 45px;
+      text-align: center;
     }
     label {
       @include main-subtitle;
       input {
         background-color: transparent;
         height: 30px;
+        width: 100%;
         padding: 10px 12px;
         background-color: transparent;
         border-radius: 5px;
@@ -253,6 +249,7 @@ $index: calc(1vw + 1vh);
         margin-top: 5px;
         display: block;
         transition-duration: 0.5s;
+        margin-bottom: 20px;
         &:hover {
           border: 1px solid #fff;
         }
@@ -260,7 +257,7 @@ $index: calc(1vw + 1vh);
         &:-webkit-autofill:hover,
         &:-webkit-autofill:focus,
         &:-webkit-autofill:active {
-          box-shadow: 0 0 0 30px #0b1d26 inset !important;
+          box-shadow: 0 0 0 30px $bg-color inset !important;
           -webkit-text-fill-color: #ffffff;
         }
       }
@@ -271,17 +268,16 @@ $index: calc(1vw + 1vh);
       cursor: pointer;
       padding: 0;
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border: 2px solid #fff;
       border-radius: 2px;
       color: #fff;
       font-size: 16px;
       width: 18px;
       height: 18px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
       font-weight: 800;
-      vertical-align: sub;
       margin-right: 10px;
       &:checked::before {
         content: '✓';
@@ -290,6 +286,8 @@ $index: calc(1vw + 1vh);
     }
     .label-agree {
       font-size: 16px;
+      display: flex;
+      justify-content: center;
     }
     .btn-submit {
       width: 100%;
@@ -326,7 +324,7 @@ $index: calc(1vw + 1vh);
       margin: 20px 32px;
     }
     &:hover {
-      color: #fbd784;
+      color: $yellow;
     }
     input {
       display: block;
@@ -337,7 +335,7 @@ $index: calc(1vw + 1vh);
       width: 3px;
       transition-duration: 0.5s;
       &:hover {
-        background-color: #fbd784;
+        background-color: $yellow;
       }
       &:checked {
         opacity: 1;
@@ -349,15 +347,15 @@ $index: calc(1vw + 1vh);
   position: relative;
   overflow: hidden;
   padding-top: calc($index * 9.567);
-  width: 101vw;
+  width: 100vw;
   min-height: 100vh;
-  background: center/cover url('../images/bg/HG.jpeg') no-repeat;
+  background: center/cover url('../images/bg/HG.jpeg') no-repeat $bg-color;
   .snow,
   .snow::after,
   .snow::before {
     content: '';
     position: absolute;
-    z-index: 5000;
+    z-index: 50;
     inset: -400px 0px 0px -250px;
     background-image: radial-gradient(4px 4px at 100px 50px, #fff, transparent),
       radial-gradient(2px 2px at 200px 150px, #fff, transparent),
@@ -422,7 +420,7 @@ $index: calc(1vw + 1vh);
       }
     }
     .hero-title {
-      font-family: 'Chronicle Display-Semibold';
+      font-family: 'Chronicle Display-Semibold', sans-serif;
       font-size: calc($index * 2.934);
       line-height: calc($index * 3.333);
       text-transform: capitalize;
@@ -450,6 +448,11 @@ $index: calc(1vw + 1vh);
     justify-content: center;
     text-align: center;
     position: relative;
+    background-image: linear-gradient(
+      to bottom,
+      transparent 90%,
+      $bg-color 90%
+    );
     .layers__back {
       transform: translate3d(0, calc(var(--scrollTop) / 3), 0);
       will-change: transform;
@@ -483,7 +486,7 @@ $index: calc(1vw + 1vh);
   width: 101vw;
   z-index: 1000;
   margin-top: calc($index * -5);
-  background-color: #0b1d26;
+  background-color: $bg-color;
   .section-content {
     width: 100%;
     display: flex;
@@ -523,12 +526,12 @@ $index: calc(1vw + 1vh);
         display: block;
         width: max-content;
         margin-top: 30px;
-        color: #fbd784;
+        color: $yellow;
         @include md-text;
         transition-duration: 0.5s;
         @include hoverText;
         &::after {
-          background-color: #fbd784;
+          background-color: $yellow;
         }
       }
     }
@@ -564,26 +567,23 @@ $index: calc(1vw + 1vh);
       .footer-menu {
         display: inline-block;
         vertical-align: top;
-        a {
-          & > * {
-            @include hoverText;
-            max-width: max-content;
-          }
-          li {
-            margin: 8px 0px;
-          }
-        }
         li {
-          font-family: 'Gilroy-Medium';
+          margin: 8px 0px;
+          @include hoverText;
+          max-width: max-content;
+          font-family: 'Gilroy-Medium', sans-serif;
           font-size: 18px;
           line-height: 32px;
-        }
-        .menu-title {
-          color: #fbd784;
-          font-family: 'Gilroy-Bold';
-          font-size: 24px;
-          line-height: 32px;
-          margin-bottom: 8px;
+          &:first-child {
+            color: $yellow;
+            font-family: 'Gilroy-Bold', sans-serif;
+            font-size: 24px;
+            line-height: 32px;
+            margin-bottom: 8px;
+            &::after {
+              background-color: $yellow;
+            }
+          }
         }
       }
     }
@@ -644,7 +644,7 @@ $index: calc(1vw + 1vh);
     }
   }
   .section-content {
-    width: 100vw !important;
+    width: 100% !important;
     flex-direction: column;
     justify-content: center;
   }
@@ -662,9 +662,6 @@ $index: calc(1vw + 1vh);
   }
 }
 @media (max-width: 768px) {
-  .main .section-content .info-col::before {
-    font-size: 150px;
-  }
   .container {
     max-width: 98%;
   }
@@ -676,16 +673,17 @@ $index: calc(1vw + 1vh);
     font-size: 35px !important;
     line-height: 100% !important;
   }
-  .hamburger-btn.active {
-    margin-left: -15%;
-  }
   .hamburger-btn.active #bar1 {
     transform: rotate(45deg);
   }
   .hamburger-btn.active #bar2 {
     position: absolute;
     width: 100%;
-    transform: rotate(-45deg) translate(10px, -7px);
+    transform: rotate(-45deg) translate(10px, -9px);
+  }
+  .hamburger-btn.active {
+    position: absolute;
+    left: calc(50% - 35px / 2);
   }
   .header {
     .hamburger-btn {
@@ -695,7 +693,7 @@ $index: calc(1vw + 1vh);
     .header-nav {
       transform: translateY(-100%);
       transition-duration: 0.5s;
-      background-color: #0b1d26;
+      background-color: $bg-color;
       position: absolute;
       inset: 0;
       width: 100%;
@@ -741,7 +739,6 @@ $index: calc(1vw + 1vh);
       }
     }
     .layers {
-      margin-top: -270px;
       & > *:first-child {
         bottom: 29%;
       }
@@ -755,8 +752,14 @@ $index: calc(1vw + 1vh);
   }
   .main {
     .section-content {
+      width: 100% !important;
+      flex-direction: column;
+      justify-content: center;
       .info-col {
         padding: 0px 10px;
+        &::before {
+          font-size: 150px;
+        }
         .info-title::before {
           white-space: wrap;
         }
@@ -778,6 +781,7 @@ $index: calc(1vw + 1vh);
       }
       &::after {
         content: '';
+        margin-left: inherit;
       }
     }
   }
@@ -808,5 +812,12 @@ $index: calc(1vw + 1vh);
         height: calc((1vw + 1vh) * 23);
       }
     }
+  }
+}
+
+@media (max-width: 768px) and (orientation: landscape) {
+  .overlay-form form {
+    max-height: 100%;
+    overflow-y: auto;
   }
 }
