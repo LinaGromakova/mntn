@@ -639,6 +639,9 @@ a {
   .section-nav {
     right: 2.5%;
   }
+  .snow {
+    display: none;
+  }
 }
 @media (orientation: portrait) {
   .layers::after {
