@@ -706,18 +706,13 @@ a {
       align-items: center;
       justify-content: center;
       text-align: center;
-      a:nth-child(2) {
-        margin: inherit;
-      }
-      a {
+
+      li {
         display: block;
-        &:first-child {
-          border-top: 1px solid #fff;
-        }
-        li {
-          display: block;
-          padding: 20px;
-          border-bottom: 1px solid #fff;
+        padding: 20px;
+        border-bottom: 1px solid #fff;
+        &:nth-child(2) {
+          margin: inherit;
         }
       }
     }
