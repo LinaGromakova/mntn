@@ -436,7 +436,6 @@ a {
       }
     }
   }
-
   .layers {
     min-height: 100vh;
     display: flex;
@@ -638,7 +637,7 @@ a {
   }
   .layers {
     margin-top: -270px;
-    & > *:last-child {
+    .layers__front {
       bottom: 24%;
     }
   }
@@ -734,10 +733,10 @@ a {
       }
     }
     .layers {
-      & > *:first-child {
+      .layers__back {
         bottom: 29%;
       }
-      & > *:last-child {
+      .layers__front {
         bottom: 24.5%;
       }
     }
@@ -800,7 +799,7 @@ a {
   }
   .section-hero {
     .layers {
-      & > *:last-child {
+      .layers__front {
         bottom: 25%;
       }
       &::after {

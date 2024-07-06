@@ -653,7 +653,7 @@ a {
   .layers {
     margin-top: -270px;
   }
-  .layers > *:last-child {
+  .layers .layers__front {
     bottom: 24%;
   }
   .section-content {
@@ -742,10 +742,10 @@ a {
   .section-hero .hero-main .hero-follow p {
     transform: rotate(0);
   }
-  .section-hero .layers > *:first-child {
+  .section-hero .layers .layers__back {
     bottom: 29%;
   }
-  .section-hero .layers > *:last-child {
+  .section-hero .layers .layers__front {
     bottom: 24.5%;
   }
   .section-nav {
@@ -790,7 +790,7 @@ a {
   .footer .footer-content .footer-col__right .footer-menu li {
     text-align: center !important;
   }
-  .section-hero .layers > *:last-child {
+  .section-hero .layers .layers__front {
     bottom: 25%;
   }
   .section-hero .layers::after {
