@@ -30,33 +30,38 @@
     <div class="wrapper">
       <div class="content">
         <header class="header nav-sec" id="start">
-          <div class="logo">
+          <div class="logo animation-item__left">
             <a href="index.html">MNTN</a>
           </div>
-          <button class="hamburger-btn" id="hamburger" title="menu">
-            <span id="bar1"></span>
-            <span id="bar2"></span>
-          </button>
+
           <nav class="header-nav" id="menu">
             <ul>
-              <li><a href="#">Equipment</a></li>
-              <li><a href="#">About us</a></li>
-              <li><a href="#">Blog</a></li>
+              <li class="animation-itemY"><a href="#">Equipment</a></li>
+              <li class="animation-itemY"><a href="#">About us</a></li>
+              <li class="animation-itemY"><a href="#">Blog</a></li>
             </ul>
           </nav>
           <button
-            class="btn-header-account"
+            class="btn-header-account animation-item__right"
             id="btn-acc"
             tabindex="0"
             title="Create account"
           >
             <img src="images/icons/account.svg" alt="Account-icon" />
           </button>
+          <button
+            class="hamburger-btn animation-item__right"
+            id="hamburger"
+            title="menu"
+          >
+            <span id="bar1"></span>
+            <span id="bar2"></span>
+          </button>
         </header>
         <section class="section-hero">
           <div class="snow"></div>
           <div class="hero-main">
-            <div class="hero-follow">
+            <div class="hero-follow animation-item__left">
               <p>Follow us</p>
               <a href="#">
                 <img src="images/icons/instagram.svg" alt="instagram"
@@ -65,12 +70,12 @@
                 <img src="images/icons/twitter.svg" alt="twitter" />
               </a>
             </div>
-            <h1 class="hero-title">
+            <h1 class="hero-title animation-itemY">
               Be prepared for the Mountains and beyond!
             </h1>
             <div></div>
           </div>
-          <div class="layers">
+          <div class="layers animation-itemY">
             <img
               src="images/bg/MG.webp"
               class="layers__back"
@@ -201,8 +206,8 @@
         >
           ×
         </button>
-        <h3>Sign Up</h3>
-        <label
+        <h3 class="form-item">Sign Up</h3>
+        <label class="form-item"
           >Name
           <input
             tabindex="0"
@@ -212,7 +217,7 @@
             id="username"
           />
         </label>
-        <label
+        <label class="form-item"
           >Email address
           <input
             tabindex="0"
@@ -221,7 +226,7 @@
             placeholder="Enter your email"
             id="useremail"
         /></label>
-        <label
+        <label class="form-item"
           >Password
           <input
             tabindex="0"
@@ -231,14 +236,16 @@
             placeholder="Password"
             id="userpass"
         /></label>
-        <label class="label-agree">
+        <label class="label-agree form-item">
           <input type="checkbox" required name="" id="" tabindex="0" />
           <span> I agree to the <u>terms & policy</u></span>
         </label>
-        <button type="submit" class="btn-submit" tabindex="0">SignUp</button>
+        <button type="submit" class="btn-submit form-item" tabindex="0">
+          SignUp
+        </button>
       </form>
     </div>
-    <div class="section-nav">
+    <div class="section-nav animation-item__right">
       <label id="btn-nav">
         <p>Start</p>
         <input type="radio" name="nav" id="nav-radio" checked />

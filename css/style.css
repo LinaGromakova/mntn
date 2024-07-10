@@ -95,6 +95,7 @@ a {
   outline: none;
   background-color: transparent;
   z-index: 10000;
+  animation-delay: 0.65s;
 }
 .header .hamburger-btn span {
   display: block;
@@ -125,8 +126,15 @@ a {
 .header .header-nav li:hover::after {
   width: 100%;
 }
+.header .header-nav li:nth-child(1) {
+  animation-delay: 0.2s;
+}
 .header .header-nav li:nth-child(2) {
   margin: 0px 35px;
+  animation-delay: 0.4s;
+}
+.header .header-nav li:nth-child(3) {
+  animation-delay: 0.6s;
 }
 .header .btn-header-account {
   position: relative;
@@ -139,6 +147,7 @@ a {
   font-size: 17px;
   line-height: 21px;
   display: flex;
+  animation-delay: 0.5s;
   align-items: center;
   height: -moz-max-content;
   height: max-content;
@@ -162,11 +171,32 @@ a {
 }
 
 .overlay-form.active {
-  transform: translateX(0%);
+  z-index: 7000;
+  transform: scaleX(1);
+}
+
+.overlay-form.active form {
+  transform: scale(1);
+}
+.overlay-form.active form .form-item {
+  animation: content-showY 0.5s linear 1s forwards;
+}
+.overlay-form.active form .form-item label {
+  animation-delay: 1.4s;
+}
+.overlay-form.active form .btn-submit {
+  animation-delay: 1.6s;
+}
+.overlay-form.active form .label-agree {
+  animation-delay: 1.5s;
+}
+.overlay-form.active form h3 {
+  animation-delay: 1.2s;
 }
 
 .overlay-form {
   position: fixed;
+  transition-duration: 0.5s;
   top: 0;
   left: 0;
   width: 100vw;
@@ -174,13 +204,12 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(240, 248, 255, 0.3);
+  background-color: rgba(0, 0, 0, 0.3);
   -webkit-backdrop-filter: blur(3px);
           backdrop-filter: blur(3px);
-  transition-duration: 1s;
-  transform: translateX(-100%);
-  z-index: 7000;
+  z-index: -2;
   overflow-y: auto;
+  transform: scale(0);
 }
 .overlay-form form {
   position: relative;
@@ -188,6 +217,14 @@ a {
   background-color: #0b1d26;
   padding: 30px 50px;
   min-height: 50vh;
+  transform: scale(0);
+  transition-duration: 0.5s;
+  transition-delay: 0.55s;
+}
+.overlay-form form .form-item {
+  transform: translateY(20px);
+  opacity: 0;
+  filter: blur(10px);
 }
 .overlay-form form .btn-acc-close {
   position: absolute;
@@ -294,6 +331,7 @@ a {
   flex-direction: column;
   align-items: flex-end;
   justify-content: center;
+  animation-delay: 1s !important;
   font-family: "Gilroy-Bold";
   font-size: 18px;
   line-height: 22px;
@@ -378,6 +416,7 @@ a {
   flex-direction: column;
   align-items: center;
   width: 20px;
+  animation-delay: 0.65s;
 }
 .section-hero .hero-main .hero-follow p {
   font-family: "Gilroy-Bold";
@@ -401,6 +440,7 @@ a {
   line-height: calc((1vw + 1vh) * 3.333);
   text-transform: capitalize;
   max-width: calc((1vw + 1vh) * 31.68);
+  animation-delay: 0.8s;
 }
 .section-hero .hero-main .hero-title::before {
   content: "⸻ A Hiking guide";
@@ -413,6 +453,9 @@ a {
   text-transform: uppercase;
   margin-bottom: 27px;
   margin-bottom: 30px;
+  transform: translateX(-50px);
+  opacity: 0;
+  animation: content-showX 0.75s linear 0.9s forwards;
 }
 .section-hero .hero-main .hero-title::after {
   content: "scroll down ↓";
@@ -691,37 +734,55 @@ a {
     width: 100%;
     transform: rotate(-45deg) translate(10px, -9px);
   }
-  .hamburger-btn.active {
-    position: absolute;
-    left: calc(50% - 17.5px);
-  }
   .header .hamburger-btn {
     display: block;
   }
   .header .header-nav {
-    transform: translateY(-100%);
+    opacity: 0;
     transition-duration: 0.5s;
     background-color: #0b1d26;
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100vh;
-    z-index: 6000;
+    z-index: -1;
+    transition-delay: 0.2s;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
   }
   .header .header-nav li {
+    animation: none;
+    transition-duration: 0.5s;
     display: block;
     padding: 20px;
-    border-bottom: 1px solid #fff;
+    font-size: 30px;
+    filter: blur(10px);
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  .header .header-nav li::after {
+    margin-top: 15px;
   }
   .header .header-nav li:nth-child(2) {
     margin: inherit;
   }
   .header .header-nav.active {
-    transform: translateY(0);
+    opacity: 1;
+    z-index: 6000;
+  }
+  .header .header-nav.active li {
+    transform: translateY(0px);
+    opacity: 1;
+    filter: blur(0px);
+    transition-delay: 0.3s;
+  }
+  .header .header-nav.active li:nth-child(2) {
+    transition-delay: 0.45s;
+  }
+  .header .header-nav.active li:nth-child(3) {
+    transition-delay: 0.55s;
   }
   .section-hero .hero-main {
     align-items: baseline;
@@ -806,4 +867,41 @@ a {
     margin-right: inherit;
     margin-bottom: 70px;
   }
+}
+@keyframes content-showY {
+  to {
+    filter: blur(0px);
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+@keyframes content-showX {
+  to {
+    filter: blur(0px);
+    transform: translateX(0px);
+    opacity: 1;
+  }
+}
+.animation-itemY {
+  filter: blur(10px);
+  transform: translateY(20px);
+  opacity: 0;
+  animation: content-showY 0.5s linear forwards;
+  will-change: transform;
+}
+
+.animation-item__left,
+.animation-item__right {
+  filter: blur(10px);
+  opacity: 0;
+  animation: content-showX 0.7s linear forwards;
+  will-change: transform;
+}
+
+.animation-item__left {
+  transform: translateX(-50px);
+}
+
+.animation-item__right {
+  transform: translateX(50px);
 }/*# sourceMappingURL=style.css.map */

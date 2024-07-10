@@ -114,7 +114,6 @@ a {
   align-items: center;
   justify-content: space-between;
   padding: calc($index * 2.1335) calc($index * 2.66666);
-
   .hamburger-btn {
     display: none;
     cursor: pointer;
@@ -125,7 +124,7 @@ a {
     outline: none;
     background-color: transparent;
     z-index: 10000;
-
+    animation-delay: 0.65s;
     span {
       display: block;
       width: 100%;
@@ -144,8 +143,15 @@ a {
       display: inline-block;
       @include md-text;
       @include hoverText;
+      &:nth-child(1) {
+        animation-delay: 0.2s;
+      }
       &:nth-child(2) {
         margin: 0px 35px;
+        animation-delay: 0.4s;
+      }
+      &:nth-child(3) {
+        animation-delay: 0.6s;
       }
     }
   }
@@ -160,6 +166,7 @@ a {
     font-size: 17px;
     line-height: 21px;
     display: flex;
+    animation-delay: 0.5s;
     align-items: center;
     height: max-content;
     &::after {
@@ -182,10 +189,30 @@ a {
   }
 }
 .overlay-form.active {
-  transform: translateX(0%);
+  z-index: 7000;
+  transform: scaleX(1);
+}
+.overlay-form.active form {
+  transform: scale(1);
+  .form-item {
+    animation: content-showY 0.5s linear 1s forwards;
+    label {
+      animation-delay: 1.4s;
+    }
+  }
+  .btn-submit {
+    animation-delay: 1.6s;
+  }
+  .label-agree {
+    animation-delay: 1.5s;
+  }
+  h3 {
+    animation-delay: 1.2s;
+  }
 }
 .overlay-form {
   position: fixed;
+  transition-duration: 0.5s;
   top: 0;
   left: 0;
   width: 100vw;
@@ -193,19 +220,25 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: rgba(aliceblue, $alpha: 0.3);
+  background-color: rgba(#000, $alpha: 0.3);
   backdrop-filter: blur(3px);
-  transition-duration: 1s;
-  transform: translateX(-100%);
-  z-index: 7000;
+  z-index: -2;
   overflow-y: auto;
-
+  transform: scale(0);
   form {
     position: relative;
     display: block;
     background-color: $bg-color;
     padding: 30px 50px;
     min-height: 50vh;
+    transform: scale(0);
+    transition-duration: 0.5s;
+    transition-delay: 0.55s;
+    .form-item {
+      transform: translateY(20px);
+      opacity: 0;
+      filter: blur(10px);
+    }
     .btn-acc-close {
       position: absolute;
       text-align: center;
@@ -258,7 +291,6 @@ a {
         }
       }
     }
-
     input[type='checkbox'] {
       appearance: none;
       cursor: pointer;
@@ -311,6 +343,7 @@ a {
   flex-direction: column;
   align-items: flex-end;
   justify-content: center;
+  animation-delay: 1s !important;
   @include md-text;
   label {
     display: flex;
@@ -400,6 +433,7 @@ a {
       flex-direction: column;
       align-items: center;
       width: 20px;
+      animation-delay: 0.65s;
       p {
         @include md-text;
         transform: rotate(90deg);
@@ -421,10 +455,14 @@ a {
       line-height: calc($index * 3.333);
       text-transform: capitalize;
       max-width: calc((1vw + 1vh) * 31.68);
+      animation-delay: 0.8s;
       &::before {
         content: '⸻ A Hiking guide';
         @include before-title;
         margin-bottom: 30px;
+        transform: translateX(-50px);
+        opacity: 0;
+        animation: content-showX 0.75s linear 0.9s forwards;
       }
       &::after {
         content: 'scroll down ↓';
@@ -583,6 +621,26 @@ a {
     }
   }
 }
+.animation-itemY {
+  filter: blur(10px);
+  transform: translateY(20px);
+  opacity: 0;
+  animation: content-showY 0.5s linear forwards;
+  will-change: transform;
+}
+.animation-item__left,
+.animation-item__right {
+  filter: blur(10px);
+  opacity: 0;
+  animation: content-showX 0.7s linear forwards;
+  will-change: transform;
+}
+.animation-item__left {
+  transform: translateX(-50px);
+}
+.animation-item__right {
+  transform: translateX(50px);
+}
 @keyframes snow-anim {
   0% {
     transform: translate(-650px, -250px);
@@ -602,6 +660,20 @@ a {
   }
   100% {
     transform: translateY(6px);
+  }
+}
+@keyframes content-showY {
+  to {
+    filter: blur(0px);
+    transform: translateY(0px);
+    opacity: 1;
+  }
+}
+@keyframes content-showX {
+  to {
+    filter: blur(0px);
+    transform: translateX(0px);
+    opacity: 1;
   }
 }
 @media (max-width: 1024px) {
@@ -676,40 +748,56 @@ a {
     width: 100%;
     transform: rotate(-45deg) translate(10px, -9px);
   }
-  .hamburger-btn.active {
-    position: absolute;
-    left: calc(50% - 35px / 2);
-  }
   .header {
     .hamburger-btn {
       display: block;
     }
-
     .header-nav {
-      transform: translateY(-100%);
+      opacity: 0;
       transition-duration: 0.5s;
       background-color: $bg-color;
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100vh;
-      z-index: 6000;
+      z-index: -1;
+      transition-delay: 0.2s;
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-
       li {
+        animation: none;
+        transition-duration: 0.5s;
         display: block;
         padding: 20px;
-        border-bottom: 1px solid #fff;
+        font-size: 30px;
+        filter: blur(10px);
+        transform: translateY(20px);
+        opacity: 0;
+        &::after {
+          margin-top: 15px;
+        }
         &:nth-child(2) {
           margin: inherit;
         }
       }
     }
     .header-nav.active {
-      transform: translateY(0);
+      opacity: 1;
+      z-index: 6000;
+    }
+    .header-nav.active li {
+      transform: translateY(0px);
+      opacity: 1;
+      filter: blur(0px);
+      transition-delay: 0.3s;
+      &:nth-child(2) {
+        transition-delay: 0.45s;
+      }
+      &:nth-child(3) {
+        transition-delay: 0.55s;
+      }
     }
   }
   .section-hero {
